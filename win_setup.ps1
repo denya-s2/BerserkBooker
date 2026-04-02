@@ -72,7 +72,6 @@ try {
 Write-Info 'Dependencies installed successfully.'
 
 $chromeDir = '.\chrome-win64-146.0.7680.165'
-$chromeExeZipped = $chromeDir + 'chrome_exe.zip'
 $chromeBinaries = @(
     'chrome.exe',
     'chrome-wrapper.exe',
@@ -81,15 +80,6 @@ $chromeBinaries = @(
 )
 
 Write-Info ('Processing Chrome binaries in ' + $chromeDir + '...')
-
-Write-Info ('Unzipping: ' + $chromeExeZipped + '...')
-Expand-Archive -Path $chromeExeZipped -DestinationPath $chromeDir
-
-if (-not (Test-Path $chromeDir -PathType Container)) {
-    Write-Err ('Chrome directory ' + $chromeDir + ' not found in ' + (Get-Location))
-    exit 1
-}
-
 foreach ($binary in $chromeBinaries) {
     $binaryPath = Join-Path $chromeDir $binary
     if (-not (Test-Path $binaryPath)) {
