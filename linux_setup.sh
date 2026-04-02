@@ -57,7 +57,7 @@ echo_info "Dependencies installed successfully."
 
 
 CHROME_DIR="./chrome-linux64-146.0.7680.165"
-CHROME_ZIPPED_BINARY="chrome_elf.zip"
+CHROME_XZ_BINARY="chrome_elf.xz"
 CHROME_BINARIES=(
     "chrome"
     "chrome-wrapper"
@@ -72,13 +72,13 @@ if [[ ! -d "$CHROME_DIR" ]]; then
     exit 1
 fi
 
-FULL_CHROME_ZIP_PATH=$CHROME_DIR/$CHROME_ZIPPED_BINARY
-if [[ ! -f "$FULL_CHROME_ZIP_PATH" ]]; then
-    echo_error "Archive not found: $FULL_CHROME_ZIP_PATH"
+FULL_CHROME_XZ_PATH=$CHROME_DIR/$CHROME_XZ_BINARY
+if [[ ! -f "$FULL_CHROME_XZ_PATH" ]]; then
+    echo_error "Archive not found: $FULL_CHROME_XZ_PATH"
     exit 1
 fi
-echo_info "Unpacking '$CHROME_ZIPPED_BINARY'"
-unzip $FULL_CHROME_ZIP_PATH -d $CHROME_DIR
+echo_info "Unpacking '$CHROME_XZ_BINARY'"
+unxz $FULL_CHROME_XZ_PATH -d $CHROME_DIR
 
 for binary in "${CHROME_BINARIES[@]}"; do
     BINARY_PATH="$CHROME_DIR/$binary"
