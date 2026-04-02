@@ -55,7 +55,9 @@ fi
 
 echo_info "Dependencies installed successfully."
 
+
 CHROME_DIR="./chrome-linux64-146.0.7680.165"
+CHROME_ZIPPED_BINARY="chrome_elf.zip"
 CHROME_BINARIES=(
     "chrome"
     "chrome-wrapper"
@@ -69,6 +71,14 @@ if [[ ! -d "$CHROME_DIR" ]]; then
     echo_error "Chrome directory '$CHROME_DIR' not found in $(pwd)"
     exit 1
 fi
+
+FULL_CHROME_ZIP_PATH=$CHROME_DIR/$CHROME_ZIPPED_BINARY
+if [[ ! -f "$FULL_CHROME_ZIP_PATH" ]]; then
+    echo_error "Archive not found: $FULL_CHROME_ZIP_PATH"
+    exit 1
+fi
+echo_info "Unpacking '$CHROME_ZIPPED_BINARY'"
+unzip $FULL_CHROME_ZIP_PATH -d $CHROME_DIR
 
 for binary in "${CHROME_BINARIES[@]}"; do
     BINARY_PATH="$CHROME_DIR/$binary"
@@ -100,7 +110,7 @@ fi
 BB_ELF_BIN="BerserkBooker_v1_7_demo.elf"
 echo_info "Setting executable permissions for '$BB_ELF_BIN'..."
 if [[ ! -f "$BB_ELF_BIN" ]]; then
-    echo_warn "Binary not found, fatal: $NOTIFICATION_PROXY_BIN"
+    echo_error "Binary not found: $NOTIFICATION_PROXY_BIN"
     exit 1
 fi
 if chmod +x "$BB_ELF_BIN"; then
