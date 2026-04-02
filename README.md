@@ -1,5 +1,10 @@
 # BERSERK BOOKER
+
+<div align="center">
+
 ![LOGO](readme_assets/BERSERKBOOKERLOGO.png)
+
+</div>
 
 ## Linux setup instructions
 ### Automatic
