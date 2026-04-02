@@ -1,4 +1,4 @@
-# BERSERK BOOKER
+# BERSERK BOOKER (DEMO VERSION)
 
 <div align="center">
 
