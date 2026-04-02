@@ -7,7 +7,7 @@ $ErrorActionPreference = 'Stop'
 Write-Info 'Checking for Python3...'
 
 $pythonCmd = $null
-foreach ($cmd in @('python3', 'python')) {
+foreach ($cmd in @('python3', 'python', 'py')) {
     try {
         $ver = & $cmd --version 2>&1
         if ($ver -match 'Python 3') {
