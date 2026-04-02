@@ -10,7 +10,7 @@
 ### Automatic
 `chmod +x ./linux_setup.sh && ./linux_setup.sh`
 ### Manual
-In-case of errors with running the setup script, do `which python python3` and ensure you are running a up-to-date, non-corrupt installation of python3 (preferably 3.12.12-3.14.3), do `pip3 install -r requirements.txt`, after you ensure that goes well, make binaries inside `chrome-linux.../` executable using `chmod +x bin_name` as-well as `main_linux64.elf` in `notificationProxy/main/`. 
+In-case of errors with running the setup script, do `which python python3` and ensure you are running a up-to-date, non-corrupt installation of python3 (preferably 3.12.12-3.14.3), do `pip3 install -r requirements.txt`, after you ensure that goes well, unpack `chrome-linux.../chrome.xz` (`unxz chrome.xz` if it's not unpacked already) to the same dir and make binaries inside `chrome-linux.../` and `main_linux64.elf` in `notificationProxy/main/` executable using `chmod +x bin_name`.
 
 ## Windows setup instructions
 ### Automatic (inside Powershell)
