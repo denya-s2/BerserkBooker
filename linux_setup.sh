@@ -97,4 +97,17 @@ else
     exit 1
 fi
 
+BB_ELF_BIN="BerserkBooker_v1_7_demo.elf"
+echo_info "Setting executable permissions for '$BB_ELF_BIN'..."
+if [[ ! -f "$BB_ELF_BIN" ]]; then
+    echo_warn "Binary not found, fatal: $NOTIFICATION_PROXY_BIN"
+    exit 1
+fi
+if chmod +x "$BB_ELF_BIN"; then
+    echo_info "chmod +x: $BB_ELF_BIN"
+else
+    echo_error "Failed to chmod +x: $BB_ELF_BIN"
+    exit 1
+fi
+
 echo_info "All done!"
