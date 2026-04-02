@@ -57,7 +57,7 @@ echo_info "Dependencies installed successfully."
 
 
 CHROME_DIR="./chrome-linux64-146.0.7680.165"
-CHROME_XZ_BINARY="chrome_elf.xz"
+CHROME_XZ_BINARY="chrome.xz"
 CHROME_BINARIES=(
     "chrome"
     "chrome-wrapper"
