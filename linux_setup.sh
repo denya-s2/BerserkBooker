@@ -49,8 +49,8 @@ if [[ ! -f "$FULL_CHROME_XZ_PATH" ]]; then
     echo_error "Archive not found: $FULL_CHROME_XZ_PATH"
     exit 1
 fi
-echo_info "Unpacking '$CHROME_XZ_BINARY'"
-unxz $FULL_CHROME_XZ_PATH -d $CHROME_DIR
+echo_info "Unpacking '$FULL_CHROME_XZ_PATH'"
+unxz "$FULL_CHROME_XZ_PATH" --keep
 
 for binary in "${CHROME_BINARIES[@]}"; do
     BINARY_PATH="$CHROME_DIR/$binary"
