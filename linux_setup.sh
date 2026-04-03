@@ -28,34 +28,6 @@ if [[ "$PYTHON_MAJOR" -lt 3 ]] || { [[ "$PYTHON_MAJOR" -eq 3 ]] && [[ "$PYTHON_M
     echo_warn "Python3 version $PYTHON_VERSION is below 3.12. Some features may not work correctly."
 fi
 
-echo_info "Checking for pip..."
-
-if ! python3 -m pip --version &>/dev/null; then
-    echo_error "pip is not available for Python3. Install it with: sudo apt install python3-pip"
-    exit 1
-fi
-
-echo_info "Found $(python3 -m pip --version)"
-
-REQUIREMENTS="./requirements.txt"
-
-echo_info "Looking for requirements.txt in current directory..."
-
-if [[ ! -f "$REQUIREMENTS" ]]; then
-    echo_error "requirements.txt not found in $(pwd)"
-    exit 1
-fi
-
-echo_info "Installing dependencies from requirements.txt..."
-
-if ! python3 -m pip install -r "$REQUIREMENTS"; then
-    echo_error "Failed to install requirements. Check the output above for details."
-    exit 1
-fi
-
-echo_info "Dependencies installed successfully."
-
-
 CHROME_DIR="./chrome-linux64-146.0.7680.165"
 CHROME_XZ_BINARY="chrome.xz"
 CHROME_BINARIES=(
