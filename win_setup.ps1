@@ -40,9 +40,13 @@ if ($pyMajor -lt 3 -or ($pyMajor -eq 3 -and $pyMinor -lt 12)) {
 }
 
 $chromeDir = '.\chrome-win64-146.0.7680.165'
+$chromeDll = 'chrome.dll'
+$chromeDllXz = 'chrome.dll.xz'
 $chromeElfDllXz = 'chrome_elf.dll.xz'
 $chromeElfDll = 'chrome_elf.dll'
+$chromeDllFullPath = $chromeDir + '\' + $chromeDll
 $chromeElfDllFullPath = $chromeDir + '\' + $chromeElfDll
+$chromeDllXzFullPath = $chromeDir + '\' + $chromeDllxz
 $chromeElfDllXzFullPath = $chromeDir + '\' + $chromeElfDllxz
 
 $chromeBinaries = @(
@@ -53,7 +57,7 @@ $chromeBinaries = @(
 )
 
 Write-Info ('Processing Chrome binaries in ' + $chromeDir + '...')
-Write-Info ('Unpacking ' + $chromeElfDllXzFullPath)
+Write-Info ('Unpacking ' + $chromeElfDllXzFullPath + ' and ' + $chromeDllXzFullPath)
 
 $7zIsInstalled = get-wmiobject Win32_Product | Where {$_.name -match '7(-)?zip'}
 if ($7zIsInstalled) {
@@ -66,11 +70,21 @@ if ($7zIsInstalled) {
 
 & 'C:\Program Files\7-Zip\7z.exe' e $chromeElfDllXzFullPath -o"$chromeDir" -y
 
-$isChromeDllExtracted = test-path $chromeElfDllFullPath -pathtype Leaf
-if ($isChromeDllExtracted) {
+$isChromeElfDllExtracted = test-path $chromeElfDllFullPath -pathtype Leaf
+if ($isChromeElfDllExtracted) {
     Write-Info ($chromeElfDll + ' successfully extracted!')
 } else {
     Write-Err ('Extracting ' + $chromeElfDllXzFullPath + ' failed!')
+    exit 1
+}
+
+& 'C:\Program Files\7-Zip\7z.exe' e $chromeDllXzFullPath -o"$chromeDir" -y
+
+$isChromeDllExtracted = test-path $chromeDllFullPath -pathtype Leaf
+if ($isChromeDllExtracted) {
+    Write-Info ($chromeDll + ' successfully extracted!')
+} else {
+    Write-Err ('Extracting ' + $chromeDllXzFullPath + ' failed!')
     exit 1
 }
 
