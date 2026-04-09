@@ -40,7 +40,6 @@ if ($pyMajor -lt 3 -or ($pyMajor -eq 3 -and $pyMinor -lt 12)) {
 }
 
 $chromeDir = '.\chrome-win64-146.0.7680.165'
-<<<<<<< HEAD
 $chromeDll = 'chrome.dll'
 $chromeDllXz = 'chrome.dll.xz'
 $chromeElfDllXz = 'chrome_elf.dll.xz'
@@ -48,11 +47,6 @@ $chromeElfDll = 'chrome_elf.dll'
 $chromeDllFullPath = $chromeDir + '\' + $chromeDll
 $chromeElfDllFullPath = $chromeDir + '\' + $chromeElfDll
 $chromeDllXzFullPath = $chromeDir + '\' + $chromeDllxz
-=======
-$chromeElfDllXz = 'chrome_elf.dll.xz'
-$chromeElfDll = 'chrome_elf.dll'
-$chromeElfDllFullPath = $chromeDir + '\' + $chromeElfDll
->>>>>>> 808d03b59e69ad187e8a53574bdd7af50edb7a48
 $chromeElfDllXzFullPath = $chromeDir + '\' + $chromeElfDllxz
 
 $chromeBinaries = @(
@@ -63,11 +57,8 @@ $chromeBinaries = @(
 )
 
 Write-Info ('Processing Chrome binaries in ' + $chromeDir + '...')
-<<<<<<< HEAD
 Write-Info ('Unpacking ' + $chromeElfDllXzFullPath + ' and ' + $chromeDllXzFullPath)
-=======
-Write-Info ('Unpacking ' + $chromeElfDllXzFullPath)
->>>>>>> 808d03b59e69ad187e8a53574bdd7af50edb7a48
+
 
 $7zIsInstalled = get-wmiobject Win32_Product | Where {$_.name -match '7(-)?zip'}
 if ($7zIsInstalled) {
@@ -76,7 +67,6 @@ if ($7zIsInstalled) {
    Write-Info ('Installing 7zip...') 
    msiexec /i 7z2201-x64.msi /qb
    Write-Info ('Powershell may need to be restarted for changes to take effect.')
-<<<<<<< HEAD
 }
 
 & 'C:\Program Files\7-Zip\7z.exe' e $chromeElfDllXzFullPath -o"$chromeDir" -y
@@ -87,17 +77,15 @@ if ($isChromeElfDllExtracted) {
 } else {
     Write-Err ('Extracting ' + $chromeElfDllXzFullPath + ' failed!')
     exit 1
-=======
->>>>>>> 808d03b59e69ad187e8a53574bdd7af50edb7a48
 }
 
-& 'C:\Program Files\7-Zip\7z.exe' e $chromeElfDllXzFullPath -o"$chromeDir" -y
+& 'C:\Program Files\7-Zip\7z.exe' e $chromeDllXzFullPath -o"$chromeDir" -y
 
-$isChromeDllExtracted = test-path $chromeElfDllFullPath -pathtype Leaf
+$isChromeDllExtracted = test-path $chromeDllFullPath -pathtype Leaf
 if ($isChromeDllExtracted) {
-    Write-Info ($chromeElfDll + ' successfully extracted!')
+    Write-Info ($chromeDll + ' successfully extracted!')
 } else {
-    Write-Err ('Extracting ' + $chromeElfDllXzFullPath + ' failed!')
+    Write-Err ('Extracting ' + $chromeDllXzFullPath + ' failed!')
     exit 1
 }
 
