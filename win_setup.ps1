@@ -40,10 +40,10 @@ if ($pyMajor -lt 3 -or ($pyMajor -eq 3 -and $pyMinor -lt 12)) {
 }
 
 $chromeDir = '.\chrome-win64-146.0.7680.165'
-$chromeDllXz = 'chrome.dll.xz'
-$chromeDll = 'chrome.dll'
-$chromeDllFullPath = $chromeDir + '\' + $chromeDll
-$chromeDllXzFullPath = $chromeDir + '\' + $chromeDllxz
+$chromeElfDllXz = 'chrome_elf.dll.xz'
+$chromeElfDll = 'chrome_elf.dll'
+$chromeElfDllFullPath = $chromeDir + '\' + $chromeElfDll
+$chromeElfDllXzFullPath = $chromeDir + '\' + $chromeElfDllxz
 
 $chromeBinaries = @(
     'chrome.exe',
@@ -53,7 +53,7 @@ $chromeBinaries = @(
 )
 
 Write-Info ('Processing Chrome binaries in ' + $chromeDir + '...')
-Write-Info ('Unpacking ' + $chromeDllXzFullPath)
+Write-Info ('Unpacking ' + $chromeElfDllXzFullPath)
 
 $7zIsInstalled = get-wmiobject Win32_Product | Where {$_.name -match '7(-)?zip'}
 if ($7zIsInstalled) {
@@ -64,13 +64,13 @@ if ($7zIsInstalled) {
    Write-Info ('Powershell may need to be restarted for changes to take effect.')
 }
 
-& 'C:\Program Files\7-Zip\7z.exe' e $chromeDllXzFullPath -o"$chromeDir" -y
+& 'C:\Program Files\7-Zip\7z.exe' e $chromeElfDllXzFullPath -o"$chromeDir" -y
 
-$isChromeDllExtracted = test-path $chromeDllFullPath -pathtype Leaf
+$isChromeDllExtracted = test-path $chromeElfDllFullPath -pathtype Leaf
 if ($isChromeDllExtracted) {
-    Write-Info ($chromeDll + ' successfully extracted!')
+    Write-Info ($chromeElfDll + ' successfully extracted!')
 } else {
-    Write-Err ('Extracting ' + $chromeDllXzFullPath + ' failed!')
+    Write-Err ('Extracting ' + $chromeElfDllXzFullPath + ' failed!')
     exit 1
 }
 
