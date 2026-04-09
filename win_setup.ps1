@@ -60,7 +60,7 @@ if ($7zIsInstalled) {
    Write-Info ('7zip seems to be installed!') 
 } else {
    Write-Info ('Installing 7zip...') 
-   msiexec /i https://www.7-zip.org/a/7z2201-x64.msi /passive
+   msiexec /i https://www.7-zip.org/a/7z2201-x64.msi /qb
    Write-Info ('Powershell may need to be restarted for changes to take effect.')
    $7zIsInstalled = get-wmiobject Win32_Product | Where {$_.name -match '7(-)?zip'}
    if ($7zIsInstalled) {
