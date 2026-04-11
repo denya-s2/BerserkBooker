@@ -17,6 +17,7 @@ In-case of errors with running the setup script, do `which python python3` and e
 `.\win_setup.ps1`
 ### Manual
 In-case of errors, follow the same steps as for the manual installation for Linux, except you don't need to ensure execute permissions for any binaries like you would on Linux.
+On top of that, make sure to extract chrome.dll.xz and chrome_elf.dll.xz using 7zip in the chrome-win64../ directory if that fails for you (to the same dir, leaving the names as is). 
 ## How to use
 `BerserkBooker_v1_7_demo.elf/exe --help` for details on the command line arguments, or you can just run the executable with no arguments.
 To configure variables for the booking like your full name or address -> change the values in the `varCfg.json` file (by default).
