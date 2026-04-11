@@ -21,3 +21,6 @@ On top of that, make sure to extract chrome.dll.xz and chrome_elf.dll.xz using 7
 ## How to use
 `BerserkBooker_v1_7_demo.elf/exe --help` for details on the command line arguments, or you can just run the executable with no arguments.
 To configure variables for the booking like your full name or address -> change the values in the `varCfg.json` file (by default).
+
+## Showcase video
+[![Watch the video](readme_assets/thumb.png)](https://linkly.link/2gHDB)
