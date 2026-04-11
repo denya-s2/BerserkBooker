@@ -1,0 +1,24 @@
+{
+    "myDrivingLicenceNumber": "AAAAAAAAAAAAAAAA",
+    "wantedTestCentres": [
+        "Guildford",
+        "Chertsey",
+        "Farnborough",
+        "York"
+    ],
+    "preferredTestDate": "12/12/26",
+    "title": "MR",
+    "firstNames": "John",
+    "surname": "Smith",
+    "myFullName": "John Smith",
+    "postcode": "SW1A 1AA",
+    "town": "London",
+    "addressLineOne": "Buckingham Palace",
+    "email": "nice@email.bro",
+    "phoneNum": "01111111111",
+    "cardNumber": "1111 1111 1111 1111",
+    "cardExpiryMonth": "1",
+    "cardExpiryYear": "27",
+    "cardHolderFullName": "MR JOHN SMITH",
+    "cardSecurityCode": "666"
+}
