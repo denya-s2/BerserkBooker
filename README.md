@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![LOGO](readme_assets/BERSERKBOOKERLOGO.png)
+![BERSERKBOOKERLOGO.png](https://i.postimg.cc/xdYmY9w9/BERSERKBOOKERLOGO.png)
 
 </div>
 
