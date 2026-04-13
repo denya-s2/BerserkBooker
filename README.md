@@ -6,6 +6,17 @@
 
 </div>
 
+## Changes in v1.8:
+ - Fixed issues with crashes after multiple booking tasks due to the browser window not able to start (win+lin).
+ - Added a `--browser_exec_path` argument to specify a custom path to the browser of your choice.
+ - Added "Continue session" functionality, where the bot can click the "Continue session" button (if it's there) to continue onto the booking task.
+ - General bug fixes (win+lin).
+
+### Todo:
+ - Make more stable on Windows 10/11.
+ - Add Queue bypass functionality.
+ - Suggest what I should also do!
+
 ## Linux setup instructions
 ### Automatic
 `chmod +x ./linux_setup.sh && ./linux_setup.sh`
@@ -21,6 +32,25 @@ On top of that, make sure to extract chrome.dll.xz and chrome_elf.dll.xz using 7
 ## How to use
 `BerserkBooker_v1_7_demo.elf/exe --help` for details on the command line arguments, or you can just run the executable with no arguments.
 To configure variables for the booking like your full name or address -> change the values in the `varCfg.json` file (by default).
+
+## User defined variables (modified in `varCfg.json`)
+ - myDrivingLicenceNumber -> string, 16 alphanumeric characters in caps
+ - wantedTestCentres -> array of strings, names start with a capital, only English alphabet letters
+ - preferredTestDate -> string, DD/MM/YY format
+ - title -> string. lower/upper-case, doesn't matter (Mr, mr, MR). Other options: Mrs,Miss,Ms,Pastor,Captain,Lord,Lady,Dr,Mx,Rev,Sir
+ - firstNames ->  string, starts with a capital, only English alphabet letters
+ - surname -> string, starts with a capital, only English alphabet letters
+ - myFullName -> string, words start with capitals, generated dynamically later
+ - postcode -> string, only alpha numeric characters, UK postcode format
+ - town -> string, starts with a capital letter
+ - addressLineOne -> string, words start with capitals, alphanumeric characters
+ - email -> string, email format
+ - phoneNum -> string, uk phonenumber format
+ - cardNumber -> string, 4 numbers 0-9 seperated with spaces
+ - cardExpiryMonth -> string, 1 to 12 allowed
+ - cardExpiryYear -> string, valid year in 2 letters (27,28,29)
+ - cardHolderFullName -> string, generated dynamically later
+ - cardSecurityCode -> string, 3 characters 0-9
 
 ## Showcase video
 [![Watch the video](readme_assets/thumb.png)](https://linkly.link/2gHDB)
