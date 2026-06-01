@@ -53,4 +53,4 @@ To configure variables for the booking like your full name or address -> change 
  - cardSecurityCode -> string, 3 characters 0-9
 
 ## Showcase video
-![Watch the video](https://linkly.link/2gHDB)
+https://linkly.link/2gHDB
